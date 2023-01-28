@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components"
+import styles from "./Card.module.css"
 import { addCharacter, deleteCharacter } from "../redux/actions.js"
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
@@ -11,7 +12,14 @@ const Carta = styled.div`
    
    display: inline-table;
    margin: 5px; 
+   border: 1px solid white;
+   border-radius: 10px;
+   background-color: #64DD17;
+   padding: 30 px;
+   width: 350px;
 `
+
+
 
 export function Card(props) {
 
@@ -37,14 +45,16 @@ export function Card(props) {
 
    return (
       <Carta>
+          <div className={styles.buttonContainer}>
          {isFav ?
             (<button onClick={handleFavorite}>❤️</button>) :
-            (<button onClick={handleFavorite}>🤍</button>)}
+               (<button onClick={handleFavorite}>🤍</button>)}
+            </div>
          <button onClick={() => props.onClose(props.id)}>X</button>
          {/* <hr/> */}
          <Link to={`/detail/${props.id}`}><h1>{props.name}</h1></Link>
-         <h2>{props.species}</h2>
-         <h2>{props.gender}</h2>
+         <h2>Specie: {props.species}</h2>
+         <h2>Gender: {props.gender}</h2>
          <Imagenes img src={props.image} alt="Img not found" />
       </Carta>
    );

@@ -10,13 +10,13 @@ import Detail from "./components/Detail/Detail.jsx";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Error from "./components/Error/Error";
 import Form from "./components/Form/Form.jsx";
-import Favorites from "./Favorites/Favorites";
+import Favorites from "../src/components/Favorites/Favorites.jsx";
 //import {location} from "react-router-dom"
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const username = "esteban@mail.com";
   const password = "hear1234";
 

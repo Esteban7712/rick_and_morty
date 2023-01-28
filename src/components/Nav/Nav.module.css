@@ -6,17 +6,23 @@
 }
 
 .about {
-    color: black;
+    color: white;
     margin-left: 10px;
     margin-right: 10px;
+    border-style: groove;
+        border-width: 4px;
 }
 
 .home {
-    color: black;
+    color: white;
+    border-style: groove;
+        border-width: 4px;
 }
 
 .favorites{
-    color: black;
+    color: white;
     margin-left: 10px;
     margin-right: 10px;
+    border-style:groove;
+    border-width: 4px;
 }

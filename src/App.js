@@ -56,7 +56,7 @@ function App() {
 
   useEffect(() => {
     !access && navigate("/");
-  }, [access]);
+  }, [access, navigate]);
 
   return (
     <div className="App" style={{ padding: "25px" }}>
@@ -72,23 +72,6 @@ function App() {
         <Route path="/detail/:detailId" element={<Detail />} />
         <Route path="*" element={<Error />} />
       </Routes>
-      {/* <div>
-        <Card
-          name={Rick.name}
-          species={Rick.species}
-          gender={Rick.gender}
-          image={Rick.image}
-          onClose={() => window.alert("Emulamos que se cierra la card")}
-        />
-      </div> */}
-      {/*  <hr />
-      <div>
-        <Nav onSearch={onSearch} />
-      </div> */}
-      {/* <div>
-        <Cards characters={characters} onClose={onClose} />
-      </div> */}
-      {/* <hr /> */}
     </div>
   );
 }

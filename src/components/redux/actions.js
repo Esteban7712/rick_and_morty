@@ -1,27 +1,29 @@
+import { DELETE_CHARACTER, ADD_CHARACTER, FILTER, ORDER } from "./actionTypes";
+
 export function addCharacter(character) {
   return {
-    type: "ADD_CHARACTER",
+    type: ADD_CHARACTER,
     payload: character,
   };
 }
 
 export function deleteCharacter(id) {
   return {
-    type: "DELETE_CHARACTER",
+    type: DELETE_CHARACTER,
     payload: id,
   };
 }
 
 export function filterCards(status) {
   return {
-    type: "FILTER",
+    type: FILTER,
     payload: status,
   };
 }
 
 export function orderCards(id) {
   return {
-    type: "ORDER",
+    type: ORDER,
     payload: id,
   };
 }

@@ -1,47 +1,46 @@
-export const initialState = {
+import { DELETE_CHARACTER, ADD_CHARACTER, FILTER, ORDER } from "./actionTypes";
+
+const initialState = {
   myFavorites: [],
-  allCharacters: []
+  allCharacters: [],
 };
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_CHARACTER":
+function rootReducer(state = initialState, { type, payload }) {
+  switch (type) {
+    case ADD_CHARACTER:
       return {
         ...state,
-        allCharacters: [...state.allCharacters, action.payload],
-        myFavorites: [...state.myFavorites, action.payload],
+        allCharacters: [...state.allCharacters, payload],
+        myFavorites: [...state.myFavorites, payload],
       };
 
-    case "DELETE_CHARACTER":
+    case DELETE_CHARACTER:
       return {
         ...state,
-        // eslint-disable-next-line no-undef
         myFavorites: state.myFavorites.filter(
-          (element) => element.id !== action.payload
+          (element) => element.id !== payload
         ),
       };
 
-    case "FILTER":
+    case FILTER:
       const filterCopy = [...state.allCharacters];
 
-      const filterGender = filterCopy.filter(
-        (char) => char.gender === action.payload
-      );
+      const filterGender = filterCopy.filter((char) => char.gender === payload);
 
       return {
         ...state,
         myFavorites: filterGender,
       };
 
-    case "ORDER":
+    case ORDER:
       const orderCopy = [...state.allCharacters];
 
       const order = orderCopy.sort((a, b) => {
         if (a.id > b.id) {
-          return action.payload === "Ascendente" ? 1 : -1;
+          return payload === "Ascending" ? 1 : -1;
         }
         if (a.id < b.id) {
-          return action.payload === "Ascendente" ? -1 : 1;
+          return payload === "Descending" ? -1 : 1;
         } else return 0;
       });
 
@@ -51,10 +50,8 @@ const rootReducer = (state = initialState, action) => {
       };
 
     default:
-      return {
-        state,
-      };
+      return state;
   }
-};
+}
 
 export default rootReducer;

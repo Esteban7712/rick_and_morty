@@ -1,4 +1,9 @@
-import { DELETE_FAVORITE, ADD_FAVORITE, FILTER, ORDER } from "./actionTypes";
+import {
+  DELETE_FAVORITE,
+  GET_FAVORITE, ADD_FAVORITE,
+  FILTER,
+  ORDER,
+} from "./actionTypes";
 import axios from "axios"
 
 export function addCharacter(character) {
@@ -8,7 +13,10 @@ export function addCharacter(character) {
         "http://localhost:3001/rickandmorty/fav",
         character
       );
-      return request;
+      return dispatch({
+        type: ADD_FAVORITE,
+        payload: request.data,
+      });
     } catch (error) {
       throw new Error(error.message);
     }
@@ -16,13 +24,13 @@ export function addCharacter(character) {
   }
 }
 
-export function getFavorites() {
+export function getFavorite() {
   return async function (dispatch) {
     try {
       const request = await axios.get(
       "http://localhost:3001/rickandmorty/fav");
       return dispatch({
-        type: ADD_FAVORITE,
+        type: GET_FAVORITE,
         payload: request.data,
       });
     }
@@ -33,9 +41,20 @@ export function getFavorites() {
 }
 
 export function deleteCharacter(id) {
-  return {
-    type: DELETE_FAVORITE,
-    payload: id,
+  return async function (dispatch) {
+    try {
+      const result = await axios.delete(
+        `http://localhost:3001/rickandmorty/fav/${id}`
+      );
+      console.log(result);
+      const dataDeleted = result.data;
+      return dispatch({
+        type: DELETE_FAVORITE,
+        payload: dataDeleted,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 

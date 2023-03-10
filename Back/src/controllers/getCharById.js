@@ -8,16 +8,16 @@ const getCharById =  async function (req, res) {
   try {
     const info = await
       axios(`${URL}${id}`)
-    
+      const data = info.data;
       const character = {
-        image: info.data.image,
-        name: info.data.name,
-        gender: info.data.gender,
+        image: data.image,
+        name: data.name,
+        gender: data.gender,
         //status: data.status,
         //origin: data.origin,
-        species: info.data.species,
+        species: data.species,
         id: data.id,
-      };
+    };
       res.status(200).json(character)
     
   }
@@ -26,7 +26,7 @@ const getCharById =  async function (req, res) {
   }
 }
 
-
+module.exports = getCharById;
 //NODE
 /* const getCharById = function (res, id) {
   axios(`https://rickandmortyapi.com/api/character/${id}`)
@@ -50,7 +50,7 @@ const getCharById =  async function (req, res) {
     });
 };
 */
-module.exports = getCharById;
+
 
 
 

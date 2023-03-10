@@ -36,11 +36,13 @@ function App() {
   }
 
   const onSearch = (character) => {
-    fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`) //`https://rickandmortyapi.com/api/character/${character}`
+    fetch(`http://localhost:3001/rickandmorty/character/${character}`) //`https://rickandmortyapi.com/api/character/${character}`
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
+          if (characters.find((char) => char.id === data.id))
+            window.alert("ID Repeated");
+          else setCharacters((oldChars) => [...oldChars, data]);
         } else {
           window.alert("No Character Found");
         }

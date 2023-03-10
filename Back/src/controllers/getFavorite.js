@@ -1,8 +1,8 @@
 const favorites = require("../utils/favorites.js");
 
-const getFavorites = async (req, res) => {
+const getFavorite = (req, res) => {
     try {
-       await res.status(200).json(favorites);
+       res.status(200).json(favorites);
     }
     catch (error) {
     res.status(500).json({ message: error.message });
@@ -10,4 +10,4 @@ const getFavorites = async (req, res) => {
     
 }
 
-module.exports = getFavorites;
+module.exports = getFavorite;

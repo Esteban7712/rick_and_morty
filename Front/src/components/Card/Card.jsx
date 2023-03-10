@@ -4,6 +4,7 @@ import styles from "./Card.module.css"
 import { addCharacter, deleteCharacter } from "../redux/actions.js"
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Imagenes = styled.img`
    border-radius: 100px
@@ -23,25 +24,42 @@ const Carta = styled.div`
 
 export function Card(props) {
 
+   const dispatch = useDispatch();
+   const favorites = useSelector((state) => state.myFavorites);
    const [isFav, setIsFav] = useState(false);
 
    function handleFavorite() {
+      let charac = {
+        name: props.name,
+        gender: props.gender,
+        species: props.species,
+        id: props.id,
+        image: props.image,
+      };
       if (isFav) {
+        setIsFav(false);
+        dispatch(deleteCharacter(props.id));
+        
+      } else {
+        setIsFav(true);
+        dispatch(addCharacter(charac));
+      }
+      /* if (isFav) {
          setIsFav(false)
          props.deleteCharacter(props.id)
       } else {
          setIsFav(true)
          props.addCharacter(props)
-      }
+      } */
    }
 
    useEffect(() => {
-   props.myFavorites?.forEach((character) => {
-      if (character.id === props.id) {
+     props.myFavorites?.forEach((character) => {
+       if (character.id === props.id) {
          setIsFav(true);
-      }
-   });
-}, [props.myFavorites]);
+       }
+     });
+   }, [favorites]);
 
    return (
      <Carta>
@@ -63,7 +81,7 @@ export function Card(props) {
    );
 }
 
- export function mapDispatchToProps(dispatch) {
+ /* export function mapDispatchToProps(dispatch) {
    return {
       addCharacter: function (character) {
          dispatch(addCharacter(character))
@@ -79,4 +97,6 @@ export function mapStateToProps(state) {
       myFavorites: state.myFavorites
    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card); */
+
+export default Card;

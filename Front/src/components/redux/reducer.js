@@ -15,10 +15,13 @@ function rootReducer(state = initialState, { type, payload }) {
       };
 
     case DELETE_FAVORITE:
+      const newAllCharacters = state.allCharacters.filter(
+        (fav) => fav.id !== payload
+      );
       return {
         ...state,
-        allCharacters: payload,
-        myFavorites: payload,
+        allCharacters: newAllCharacters,
+        myFavorites: newAllCharacters,
       };
     /* return {
         ...state,

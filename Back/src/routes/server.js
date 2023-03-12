@@ -42,7 +42,7 @@ server.get("/", (request, response) => {
 
 
 
-sequelize.sync({force: true}).then(async () => {
+sequelize.sync({force: true}).then(async () => {//force: true, borra todos los registros cada que se reinicie el servidor
   await saveApiData();
   server.listen(PORT, (error) => {
   if (error) return console.log(`Error: ${error}`);

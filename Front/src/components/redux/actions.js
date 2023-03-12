@@ -6,16 +6,25 @@ import {
 } from "./actionTypes";
 import axios from "axios"
 
-export function addCharacter(character) {
+export function addCharacter(props) {
   return async function (dispatch) {
     try {
       const request = await axios.post(
         "http://localhost:3001/rickandmorty/fav",
-        character
+        {
+          id: props.id,
+          gender: props.gender,
+          image: props.image,
+          name: props.name,
+          species: props.species,
+          status: props.status,
+          origin: props.origin,
+        }
       );
+      const data = await request.data;
       return dispatch({
         type: ADD_FAVORITE,
-        payload: request.data,
+        payload: data,
       });
     } catch (error) {
       throw new Error(error.message);

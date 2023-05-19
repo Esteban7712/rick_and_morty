@@ -1,21 +1,23 @@
-import { DELETE_FAVORITE, ADD_FAVORITE,GET_FAVORITE,  FILTER, ORDER } from "./actionTypes";
+import { DELETE_FAVORITE, ADD_FAVORITE, GET_FAVORITE,  FILTER, ORDER } from "./actionTypes";
 
 const initialState = {
   myFavorites: [],
   allCharacters: [],
 };
 
+console.log(initialState.myFavorites);
 function rootReducer(state = initialState, { type, payload }) {
+  console.log(state);
   switch (type) {
     case ADD_FAVORITE:
       return {
         ...state,
         allCharacters: [...state.allCharacters, payload],
-        myFavorites: payload,
+        myFavorites: [...state.myFavorites, payload]
       };
-
+      
     case DELETE_FAVORITE:
-      const newAllCharacters = state.allCharacters.filter(
+      const newAllCharacters = state.myFavorites.filter(
         (fav) => fav.id !== payload
       );
       return {

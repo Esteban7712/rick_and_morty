@@ -22,7 +22,7 @@
     background-color: black;
     font-family:Verdana, Geneva, Tahoma, sans-serif ;
     width: 320px;
-    height: 240px;
+    height: 250px;
     color: white;
     top: 50%;
     left: 50%;
@@ -39,10 +39,20 @@
 }
 
 .submit{
-    width: 200px;
+     width: 200px;
     height: 40px;
     border-radius: 10px;
     background-color:rgb(17, 206, 17);
     font-weight: bold;
-    font-size:x-large;
+    font-size:x-large; 
+    cursor: pointer;
+    border-color: rgb(17, 206, 17);
+        color: black;
+        box-shadow: 0 0 40px 40px rgb(17, 206, 17) inset, 0 0 0 0 rgb(17, 206, 17);
+        -webkit-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
 }
+    
+    .submit:hover {
+        box-shadow: 0 0 10px 0 rgb(17, 206, 17) inset, 0 0 10px 4px rgb(17, 206, 17);
+    }

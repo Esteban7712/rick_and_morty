@@ -13,8 +13,8 @@ const getCharById =  async function (req, res) {
         image: data.image,
         name: data.name,
         gender: data.gender,
-        //status: data.status,
-        //origin: data.origin,
+        status: data.status,
+        origin: data.origin,
         species: data.species,
         id: data.id,
     };

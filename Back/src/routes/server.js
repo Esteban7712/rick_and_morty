@@ -6,14 +6,17 @@ const express = require("express")
 const server = express()
 const cors = require("cors");
 const saveApiData = require("../controllers/saveApiData")
-const {sequelize} = require("../DB_connection")
+const { sequelize } = require("../DB_connection")
+const morgan = require("morgan");
 
 
 
 server.use(cors());
+server.use(morgan("dev"));
 server.use("/", router); //middleware
 server.use(express.json())//middleware
 
+//activar la ruta "/"
 server.get("/", (request, response) => {
   console.log(`URL: ${request.url}`);
   response.send("SERVER IS ALIVE");
@@ -42,7 +45,7 @@ server.get("/", (request, response) => {
 
 
 
-sequelize.sync({force: true}).then(async () => {//force: true, borra todos los registros cada que se reinicie el servidor
+sequelize.sync({force: false}).then(async () => {//force: true, borra todos los registros cada que se reinicie el servidor
   await saveApiData();
   server.listen(PORT, (error) => {
   if (error) return console.log(`Error: ${error}`);

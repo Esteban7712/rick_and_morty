@@ -5,8 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://wallpaperforu.com/wp-content/uploads/2021/08/Wallpaper-Rick-And-Morty-Illustration-Tv-Adult-Swim-Ri30-scaled.jpg");
-  background-repeat: no-repeat;
+  background-image: url("../public/Wallpaper-Rick-And-Morty-Illustration-Tv-Adult-Swim-Ri30-scaled.webp");
+/*   background-image: url("https://wallpaperforu.com/wp-content/uploads/2021/08/Wallpaper-Rick-And-Morty-Illustration-Tv-Adult-Swim-Ri30-scaled.jpg");
+ */  background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }

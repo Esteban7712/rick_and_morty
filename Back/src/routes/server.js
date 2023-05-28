@@ -43,15 +43,21 @@ server.get("/", (request, response) => {
   next();
 }); */
 
-
-
 sequelize.sync({force: false}).then(async () => {//force: true, borra todos los registros cada que se reinicie el servidor
+  await saveApiData();
+  server.listen(PORT, "0.0.0.0", (error) => {
+  if (error) return console.log(`Error: ${error}`);
+  console.log(`Server listening on port ${PORT}`);
+});
+}) 
+
+/* sequelize.sync({force: false}).then(async () => {//force: true, borra todos los registros cada que se reinicie el servidor
   await saveApiData();
   server.listen(PORT, (error) => {
   if (error) return console.log(`Error: ${error}`);
   console.log(`Server listening on port ${PORT}`);
 });
-})
+}) */
 
 module.exports = {server}
 

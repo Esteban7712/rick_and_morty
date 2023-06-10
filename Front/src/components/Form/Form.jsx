@@ -1,7 +1,7 @@
 import React from "react";
 import validation from "./validation.js";
 import styles from "./Form.module.css";
-
+import { Link } from "react-router-dom";
 
 
 export default function Form(props) {
@@ -61,6 +61,15 @@ export default function Form(props) {
             Enter
           </button>
         </form>
+        <div className={styles.loginBox2}>
+          <Link to={"/home"}>
+          <button className={styles.submit2}>
+            Guest
+          </button>
+        </Link>
+          
+        </div>
       </div>
+      
     );
 }
